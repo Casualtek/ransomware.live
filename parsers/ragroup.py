@@ -1,9 +1,8 @@
-
 """
 +------------------------------+------------------+----------+
 | Description | Published Date | Victim's Website | Post URL |
 +------------------------------+------------------+----------+
-|      X      |                |          X       |          |
+|      X      |                |                  |    x     |
 +------------------------------+------------------+----------+
 Rappel : def appender(post_title, group_name, description="", website="", published="", post_url=""):
 """
@@ -24,8 +23,10 @@ def main():
                     title = div.find("a").text
                     url =  div.find("a")["href"]
                     parts = filename.split('-')
-                    post_url = 'http://' + parts + '.onion' + url
-                    appender(title, 'ragroup', '','','',post_url)
+                    site = parts[1].replace('.html','')
+                    post_url = 'http://' + site + '.onion' + url
+                    if "(Full Leaked)" not in title:
+                        appender(title, 'ragroup', '','','',post_url)
                 file.close()
         except:
             errlog('ragroup: ' + 'parsing fail')
