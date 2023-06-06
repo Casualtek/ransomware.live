@@ -42,7 +42,8 @@ def screenshot(webpage,output,delay=15000,option=None):
     with sync_playwright() as play:
                 try:
                     if option in ['exception']:
-                        browser = play.firefox.launch(proxy={"server": "socks5://127.0.0.1:9050"},
+                        #browser = play.firefox.launch(proxy={"server": "socks5://127.0.0.1:9050"},
+                        browser = play.firefox.launch(
                           args=[''])
                         print('(!) exception')
                     else:
